@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { FeedPostEntity } from "src/feed/models/post.entity";
 
 @Entity({ name: "user" })
@@ -9,6 +9,7 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 255 })
   name: string;
 
+  @Index({ unique: true })
   @Column({ type: 'varchar', length: 255 })
   email: string;
 
