@@ -4,6 +4,7 @@ import { FeedService } from "../services/feed.service";
 import { Request } from "express";
 import { AuthGuard } from "src/auth/auth.guard";
 import { CreatePostDto } from "../dto/create-post-dto";
+import { UpdatePostDto } from "../dto/update-post-dto";
 
 @Controller("feed")
 export class FeedController {
@@ -25,7 +26,7 @@ export class FeedController {
 
   @Put(":id")
   @UseGuards(AuthGuard)
-  async updatePost(@Req() req: Request, @Param("id") id: number, @Body() feedPost: any): Promise<FeedPost> {
+  async updatePost(@Req() req: Request, @Param("id") id: number, @Body() feedPost: UpdatePostDto): Promise<FeedPost> {
     const user = req['user'];
     const found_post = await this.feedSerivce.getPost({ id, user });
     if (!found_post) {
