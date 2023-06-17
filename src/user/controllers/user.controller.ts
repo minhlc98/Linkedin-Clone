@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { SignInDto } from "../dto/signin-dto";
 import { SignUpDto } from "../dto/signup-dto";
-import { ISignIn } from "../interfaces/signin.interface";
+import { ISignResult } from "../interfaces/signin.interface";
 import { UserEntity } from "../models/user.entity";
 import { UserService } from "../services/user.service";
 
@@ -15,7 +15,7 @@ export class UserController {
   }
 
   @Post("signin")
-  async signIn(@Body() user: SignInDto): Promise<ISignIn> {
+  async signIn(@Body() user: SignInDto): Promise<ISignResult> {
     return this.userService.signIn(user);
   }
 }
