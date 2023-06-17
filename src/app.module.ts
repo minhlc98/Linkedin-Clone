@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { FeedModule } from './feed/feed.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -19,9 +20,12 @@ import { AppService } from './app.service';
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
       synchronize: true
-    })
+    }),
+    AuthModule,
+    FeedModule,
+    UserModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
