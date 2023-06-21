@@ -1,0 +1,10 @@
+stages:
+  - test
+
+run_test:
+  stage: test
+  script:
+    - echo "Hello World"
+    - echo "Compiling code..."
+  only:
+    - develop
